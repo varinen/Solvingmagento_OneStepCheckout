@@ -1,0 +1,94 @@
+.checkout-clear-both {
+    clear: both;
+}
+
+#checkoutStepsPreload {
+    display: none;
+}
+div.osc li.fields {
+    width: 283px;
+}
+
+div.onestep-step {
+    margin-bottom: 20px;
+}
+div.osc-column .step-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 0 10px 0;
+}
+div.customer-name, div.two-fields {
+    width: 100%;
+}
+div.customer-name .input-box, div.customer-name input[type="text"],
+div.two-fields .input-box, div.two-fields input[type="text"],
+div.two-fields .input-box, div.two-fields input[type="password"]{
+    width: 100%;
+}
+div.customer-name .field, div.two-fields .field {
+    float:left;
+    margin-right: 10px;
+    width: 122px;
+}
+
+ul.form-list input[type="radio"] {
+    float:left;
+    margin-right: 6px;
+}
+
+ul.form-list div.input-box label {
+    width: 235px;
+}
+
+div.osc-column-wrapper {
+    width: 890px;
+    padding: 5px;
+    min-height: 200px;;
+}
+div.osc-column-wrapper h3 {
+    font-size: 14px;
+}
+div.osc-column-wrapper div.osc-column {
+    width: 293px;
+    margin-right: 5px;
+    float: left;
+}
+
+#billing-address-select div.input-box,
+#shipping-address-select div.input-box {
+    padding: 10px 0;
+}
+
+div.osc-column-wrapper div.right {
+    margin-right: 0;
+}
+
+div.osc-column-wrapper div.up,
+div.osc-column-wrapper div.bottom {
+    float: none;
+    width: 100%;
+    clear: both;
+}
+
+div.login-method {
+    float:left;
+    margin-right: 20px;
+}
+
+div.step-please-wait {
+    float: left;
+    margin: 0 15px;
+}
+
+div.step-title {
+    float:left;
+}
+
+div.checkout-review-update-container {
+    margin-bottom: 10px;
+}
+
+#review-submit-please-wait {
+    float: left;
+    margin: 10px;
+}
