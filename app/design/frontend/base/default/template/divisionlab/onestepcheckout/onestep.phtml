@@ -1,0 +1,102 @@
+<?php
+/**
+ * Divisionlab_OneStepCheckout main template
+ *
+ * PHP version 5.3
+ *
+ * @category  Divisionlab
+ * @package   Divisionlab_OneStepCheckout
+ * @author    Oleg Ishenko <oleg.ishenko@solvingmagento.com>
+ * @copyright 2014 Oleg Ishenko
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @version   GIT: <0.1.0>
+ * @link      http://www.solvingmagento.com/
+ *
+ */
+?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Checkout') ?></h1>
+</div>
+
+<div class="osc-column-wrapper">
+    <div id="osc-column-up" class="osc-column up"></div>
+    <div id="osc-column-left" class="osc-column left">
+
+    </div>
+    <div id="osc-column-center" class="osc-column center">
+
+    </div>
+    <div id="osc-column-right" class="osc-column right">
+
+    </div>
+
+    <div id="osc-column-bottom" class="osc-column bottom"></div>
+</div>
+
+
+<div id="checkoutStepsPreload" >
+    <?php
+    $i = 0;
+    foreach ($this->getSteps() as $stepId => $stepInfo): ?>
+        <?php if (!$this->getChild($stepId) || !$this->getChild($stepId)->isShow()): continue; endif; $i++ ?>
+        <div id="osc-<?php echo $stepId ?>" class="section<?php echo !empty($stepInfo['complete'])?' saved':'' ?>">
+            <div id="checkout-step-<?php echo $stepId ?>" class="step a-item">
+                <div class="step-title">
+                    <span class="number"><?php echo $i ?></span>
+                    <span class="step-title"><?php echo $stepInfo['label'] ?></span>
+                </div>
+                <?php echo $this->getChildHtml($stepId) ?>
+            </div>
+        </div>
+    <?php endforeach ?>
+</div>
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/MethodStep.js') ?>"
+    ></script>
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/Checkout.js') ?>"
+    ></script>
+
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/Login.js') ?>"
+    ></script>
+
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/Billing.js') ?>"
+    ></script>
+
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/Shipping.js') ?>"
+    ></script>
+
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/ShippingMethod.js') ?>"
+    ></script>
+
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/Payment.js') ?>"
+    ></script>
+
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/Review.js') ?>"
+    ></script>
+
+<script
+    type="text/javascript"
+    src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/onestep.js') ?>"
+    ></script>
+<script type="text/javascript">
+    //<![CDATA[
+
+
+    //]]>
+</script>

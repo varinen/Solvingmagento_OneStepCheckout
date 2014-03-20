@@ -1,0 +1,45 @@
+<?php
+/**
+ * Divisionlab_OneStepCheckout order submit button template
+ *
+ * PHP version 5.3
+ *
+ * @category  Divisionlab
+ * @package   Divisionlab_OneStepCheckout
+ * @author    Magento Core Team <core@magentocommerce.com>
+ * @author    Oleg Ishenko <oleg.ishenko@solvingmagento.com>
+ * @copyright Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com), 2014 Oleg Ishenko
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @version   GIT: <0.1.0>
+ * @link      http://www.solvingmagento.com/
+ *
+ */
+?>
+
+<div style="float:right">
+    <div id="review-submit-please-wait" style="display: none">
+        <span>
+            <img
+                src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>"
+                alt="<?php echo $this->__('Saving data, please wait...') ?>"
+                title="<?php echo $this->__('Saving data, please wait...') ?>" class="v-middle" />
+        </span>
+    </div>
+    <button
+        type="button"
+        title="<?php echo $this->__('Update order before placing');?>"
+        class="button btn-checkout"
+        id="order_submit_button">
+
+        <span><span><?php echo $this->__('Update order before placing') ?></span></span>
+    </button>
+
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var buttonUpdateText = '<?php echo $this->__('Update order before placing') ?>',
+        buttonSaveText = '<?php echo $this->__('Place order') ?>',
+        buttonWaitText = '<?php echo $this->__('Please wait...') ?>';
+        //]]>
+</script>

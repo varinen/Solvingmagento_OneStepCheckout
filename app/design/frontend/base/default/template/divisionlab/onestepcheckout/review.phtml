@@ -1,0 +1,43 @@
+<?php
+/**
+ * Divisionlab_OneStepCheckout review step template
+ *
+ * PHP version 5.3
+ *
+ * @category  Divisionlab
+ * @package   Divisionlab_OneStepCheckout
+ * @author    Magento Core Team <core@magentocommerce.com>
+ * @author    Oleg Ishenko <oleg.ishenko@solvingmagento.com>
+ * @copyright Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com), 2014 Oleg Ishenko
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @version   GIT: <0.1.0>
+ * @link      http://www.solvingmagento.com/
+ *
+ */
+?>
+<div id="review-please-wait" class="step-please-wait" style="display: none">
+        <span class="please-wait">
+            <img
+                src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>"
+                alt="<?php echo $this->__('Saving data, please wait...') ?>"
+                title="<?php echo $this->__('Saving data, please wait...') ?>" class="v-middle" />
+        </span>
+</div>
+<div class="checkout-review-update-container checkout-clear-both">
+    <a href="#_"  id="checkout-review-update"><?php echo Mage::helper('checkout')->__('Update order review');?></a>
+</div>
+<div class="order-review" id="checkout-load-review">
+    <?php echo $this->getChildHtml('info') ?>
+</div>
+
+<div id="checkout-review-submit">
+    <?php echo $this->getChildHtml('agreements') ?>
+    <div class="buttons-set" id="review-buttons-container">
+        <p class="f-left">
+            <?php echo $this->__('Forgot an Item?') ?> <a href="<?php echo $this->getUrl('checkout/cart') ?>">
+                <?php echo $this->__('Edit Your Cart') ?></a>
+        </p>
+        <?php echo $this->getChildHtml('button') ?>
+    </div>
+</div>
+

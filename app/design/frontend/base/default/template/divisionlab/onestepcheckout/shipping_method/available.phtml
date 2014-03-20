@@ -1,0 +1,95 @@
+<?php
+/**
+ * Divisionlab_OneStepCheckout shipping method available methods template
+ *
+ * PHP version 5.3
+ *
+ * @category  Divisionlab
+ * @package   Divisionlab_OneStepCheckout
+ * @author    Magento Core Team <core@magentocommerce.com>
+ * @author    Oleg Ishenko <oleg.ishenko@solvingmagento.com>
+ * @copyright Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com), 2014 Oleg Ishenko
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @version   GIT: <0.1.0>
+ * @link      http://www.solvingmagento.com/
+ *
+ */
+?>
+<?php
+/** @var $this Mage_Checkout_Block_Onepage_Shipping_Method_Available */
+
+$shippingRateGroups = $this->getShippingRates(); ?>
+<?php if (!$shippingRateGroups): ?>
+    <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else: ?>
+    <dl class="sp-methods">
+        <?php
+        $shippingCodePrice = array();
+        $sole = count($shippingRateGroups) == 1;
+        foreach ($shippingRateGroups as $code => $rates): ?>
+        <dt><?php echo $this->escapeHtml($this->getCarrierName($code)) ?></dt>
+        <dd>
+            <ul>
+                <?php
+                $sole = $sole && count($rates) == 1;
+                foreach ($rates as $rate): ?>
+                    <?php $shippingCodePrice[] = "'" . $rate->getCode() . "':" . (float) $rate->getPrice(); ?>
+                        <li>
+                            <?php if ($rate->getErrorMessage()): ?>
+                                <ul class="messages">
+                                    <li class="error-msg">
+                                        <ul>
+                                            <li>
+                                                <?php echo $this->escapeHtml($rate->getErrorMessage()) ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            <?php else: ?>
+                                <?php if ($sole) : ?>
+                                    <span class="no-display">
+                                        <input
+                                            name="shipping_method"
+                                            type="radio"
+                                            value="<?php echo $rate->getCode() ?>"
+                                            id="s_method_<?php echo $rate->getCode() ?>"
+                                            checked="checked" />
+                                    </span>
+                                <?php else: ?>
+                                <input
+                                    name="shipping_method"
+                                    type="radio"
+                                    value="<?php echo $rate->getCode() ?>"
+                                    id="s_method_<?php echo $rate->getCode() ?>"
+                                    <?php if($rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?>
+                                    class="radio"/>
+
+                                <?php if ($rate->getCode() === $this->getAddressShippingMethod()): ?>
+                                    <script type="text/javascript">
+                                        //<![CDATA[
+                                        lastPrice = <?php echo (float)$rate->getPrice(); ?>;
+                                        //]]>
+                                    </script>
+                                <?php endif; ?>
+
+                                <?php endif; ?>
+                                <label for="s_method_<?php echo $rate->getCode() ?>">
+                                    <?php echo $this->escapeHtml($rate->getMethodTitle()) ?>
+                                    <?php $excl = $this->getShippingPrice(
+                                        $rate->getPrice(),
+                                        $this->helper('tax')->displayShippingPriceIncludingTax()
+                                    ); ?>
+                                    <?php $incl = $this->getShippingPrice($rate->getPrice(), true); ?>
+                                    <?php echo $excl; ?>
+                                    <?php if ($this->helper('tax')->displayShippingBothPrices() && $incl != $excl): ?>
+                                        (<?php echo $this->__('Incl. Tax'); ?> <?php echo $incl; ?>)
+                                    <?php endif; ?>
+                                </label>
+                            <?php endif ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </dd>
+        <?php endforeach; ?>
+    </dl>
+<?php endif; ?>

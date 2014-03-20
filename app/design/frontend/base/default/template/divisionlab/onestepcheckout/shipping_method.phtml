@@ -1,0 +1,42 @@
+<?php
+/**
+ * Divisionlab_OneStepCheckout shipping method step template
+ *
+ * PHP version 5.3
+ *
+ * @category  Divisionlab
+ * @package   Divisionlab_OneStepCheckout
+ * @author    Magento Core Team <core@magentocommerce.com>
+ * @author    Oleg Ishenko <oleg.ishenko@solvingmagento.com>
+ * @copyright Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com), 2014 Oleg Ishenko
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @version   GIT: <0.1.0>
+ * @link      http://www.solvingmagento.com/
+ *
+ */
+?>
+<div id="shipping_method-please-wait" class="step-please-wait" style="display: none">
+        <span class="please-wait">
+            <img
+                src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>"
+                alt="<?php echo $this->__('Saving data, please wait...') ?>"
+                title="<?php echo $this->__('Saving data, please wait...') ?>"
+                class="v-middle" />
+        </span>
+</div>
+<div class="checkout-clear-both"></div>
+<div class="onestep-step">
+    <form id="co-shipping-method-form" action="">
+        <div id="checkout-load-shipping_method">
+            <?php echo $this->getChildHtml('available') ?>
+        </div>
+        <div id="reload-shipping-method">
+            <a href="#" id="reload-shipping-method-button"><?php echo $this->__('Update shipping options');?></a>
+        </div>
+    </form>
+</div>
+<div id="shipping_method-advice-source" style="display: none">
+    <div class="validation-advice advice-required-entry-shipping_method" style="display:none">
+        <?php echo Mage::helper('checkout')->__('This is a required field.');?>
+    </div>
+</div>

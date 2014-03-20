@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Divisionlab_OneStepCheckout configuration
+*
+* @category Divisionlab
+* @package Divisionlab_OneStepCheckout
+* @author Oleg Ishenko <oleg.ishenko@solvingmagento.com>
+* @copyright 2014 Oleg Ishenko
+* @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+* @version GIT: <0.1.0>
+* @link http://www.solvingmagento.com/
+*
+*/
+-->
+<config>
+    <modules>
+        <Divisionlab_OneStepCheckout>
+            <version>0.1.1</version>
+        </Divisionlab_OneStepCheckout>
+    </modules>
+    <global>
+        <blocks>
+            <divisionlab_onestepc>
+                <class>Divisionlab_OneStepCheckout_Block</class>
+            </divisionlab_onestepc>
+        </blocks>
+        <helpers>
+            <divisionlab_onestepc>
+                <class>Divisionlab_OneStepCheckout_Helper</class>
+            </divisionlab_onestepc>
+        </helpers>
+        <models>
+            <divisionlab_onestepc>
+                <class>Divisionlab_OneStepCheckout_Model</class>
+            </divisionlab_onestepc>
+        </models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <divisionlab_onestepc module="Divisionlab_OneStepCheckout">
+                    <file>divisionlab/onestepcheckout.xml</file>
+                </divisionlab_onestepc>
+            </updates>
+        </layout>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <Divisionlab_OneStepCheckout before="Mage_Checkout">Divisionlab_OneStepCheckout</Divisionlab_OneStepCheckout>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+    </frontend>
+    <default>
+        <checkout>
+            <options>
+                <onestep_checkout_enabled>0</onestep_checkout_enabled>
+            </options>
+        </checkout>
+    </default>
+</config>

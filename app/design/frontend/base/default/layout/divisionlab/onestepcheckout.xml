@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Divisionlab_AffiliateProduct front-end layout updates
+*
+* @category Divisionlab
+* @package Divisionlab_AffiliateProduct
+* @author Oleg Ishenko <oleg.ishenko@solvingmagento.com>
+* @copyright 2013 Oleg Ishenko
+* @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+* @version GIT: <0.1.0>
+* @link http://www.solvingmagento.com/
+*
+*/
+-->
+
+<layout version="0.1.0">
+    <default>
+        <reference name="top.links">
+            <block type="divisionlab_onestepc/link" name="onestep_checkout_link">
+                <action method="addOnestepCheckoutLink"></action>
+            </block>
+        </reference>
+    </default>
+
+    <checkout_cart_index>
+        <reference name="checkout.cart.methods">
+            <block
+                    type="divisionlab_onestepc/link"
+                    name="checkout.cart.methods.onestep"
+                    template="divisionlab/onestepcheckout/link.phtml" />
+        </reference>
+    </checkout_cart_index>
+
+
+    <checkout_onestep_index translate="label">
+        <label>One Step Checkout</label>
+        <!-- Mage_Checkout -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/divisionlab/onestepcheckout/onestep.css</name>
+                <params/>
+            </action>
+        </reference>
+        <reference name="content">
+            <block
+                    type="divisionlab_onestepc/onestep"
+                    name="checkout.onestep"
+                    template="divisionlab/onestepcheckout/onestep.phtml">
+                <block
+                        type="divisionlab_onestepc/onestep_login"
+                        name="checkout.onestep.login" as="login"
+                        template="divisionlab/onestepcheckout/login.phtml">
+                </block>
+                <block
+                        type="divisionlab_onestepc/onestep_billing"
+                        name="checkout.onestep.billing" as="billing"
+                        template="divisionlab/onestepcheckout/billing.phtml"/>
+                <block
+                        type="divisionlab_onestepc/onestep_shipping"
+                        name="checkout.onestep.shipping" as="shipping"
+                        template="divisionlab/onestepcheckout/shipping.phtml"/>
+                <block
+                        type="divisionlab_onestepc/onestep_shipping_method"
+                        name="checkout.onestep.shipping_method"
+                        as="shipping_method"
+                        template="divisionlab/onestepcheckout/shipping_method.phtml">
+                    <block
+                            type="checkout/onepage_shipping_method_available"
+                            name="checkout.onepage.shipping_method.available"
+                            as="available"
+                            template="divisionlab/onestepcheckout/shipping_method/available.phtml"/>
+                    <block
+                            type="checkout/onepage_shipping_method_additional"
+                            name="checkout.onepage.shipping_method.additional"
+                            as="additional"
+                            template="checkout/onepage/shipping_method/additional.phtml"/>
+                </block>
+                <block
+                        type="divisionlab_onestepc/onestep_payment"
+                        name="checkout.onestep.payment"
+                        as="payment"
+                        template="divisionlab/onestepcheckout/payment.phtml">
+                    <block
+                            type="checkout/onepage_payment_methods"
+                            name="checkout.payment.methods"
+                            as="methods"
+                            template="divisionlab/onestepcheckout/payment/methods.phtml">
+                        <action method="setMethodFormTemplate">
+                            <method>purchaseorder</method>
+                            <template>payment/form/purchaseorder.phtml</template>
+                        </action>
+                    </block>
+                </block>
+                <block
+                        type="divisionlab_onestepc/onestep_review"
+                        name="checkout.onestep.review"
+                        as="review"
+                        template="divisionlab/onestepcheckout/review.phtml">
+                    <block
+                            type="core/template"
+                            name="checkout.onestep.review.button"
+                            as="button"
+                            template="divisionlab/onestepcheckout/review/button.phtml"/>
+                    <block
+                            type="checkout/agreements"
+                            name="checkout.onestep.agreements"
+                            as="agreements"
+                            template="checkout/onepage/agreements.phtml"/>
+                </block>
+            </block>
+        </reference>
+    </checkout_onestep_index>
+
+    <!-- defining handle for an ajax shipping method update -->
+    <checkout_onestep_shippingmethod>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+        <block
+                type="checkout/onepage_shipping_method_available"
+                name="checkout.shipping.methods"
+                output="toHtml"
+                template="divisionlab/onestepcheckout/shipping_method/available.phtml"/>
+    </checkout_onestep_shippingmethod>
+
+    <!-- defining handle for an ajax payment method update -->
+    <checkout_onestep_paymentmethod>
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block
+                type="checkout/onepage_payment_methods"
+                name="checkout.payment.methods"
+                output="toHtml"
+                template="divisionlab/onestepcheckout/payment/methods.phtml">
+            <action method="setMethodFormTemplate">
+                <method>purchaseorder</method>
+                <template>payment/form/purchaseorder.phtml</template>
+            </action>
+        </block>
+    </checkout_onestep_paymentmethod>
+
+
+    <checkout_onestep_review translate="label">
+        <label>One Step Checkout Overview</label>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block
+                type="checkout/onepage_review_info"
+                name="checkout.review"
+                output="toHtml"
+                template="divisionlab/onestepcheckout/review/info.phtml">
+            <action method="addItemRender">
+                <type>default</type>
+                <block>checkout/cart_item_renderer</block>
+                <template>checkout/onepage/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>grouped</type>
+                <block>checkout/cart_item_renderer_grouped</block>
+                <template>checkout/onepage/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>configurable</type>
+                <block>checkout/cart_item_renderer_configurable</block>
+                <template>checkout/onepage/review/item.phtml</template>
+            </action>
+            <block
+                    type="checkout/cart_totals"
+                    name="checkout.onestep.review.info.totals"
+                    as="totals"
+                    template="checkout/onepage/review/totals.phtml"/>
+            <block
+                    type="core/text_list"
+                    name="checkout.onepage.review.info.items.before"
+                    as="items_before"
+                    translate="label">
+                <label>Items Before</label>
+            </block>
+            <block
+                    type="core/text_list"
+                    name="checkout.onestep.review.info.items.after"
+                    as="items_after"
+                    translate="label">
+                <label>Items After</label>
+            </block>
+        </block>
+    </checkout_onestep_review>
+
+    <checkout_onestep_success translate="label">
+        <label>One Step Checkout Success</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml"/>
+        </reference>
+    </checkout_onestep_success>
+
+</layout>
