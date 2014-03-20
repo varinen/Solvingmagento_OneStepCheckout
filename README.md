@@ -1,6 +1,6 @@
 Solvingmagento_OneStepCheckout
 ==============================
 
-This sample extension complements the [Magento Grouped product type tutorial].
+This sample extension complements the [Magento OneSyetep Checkout tutorial].
 
-[Magento Grouped product type tutorial]: http://www.solvingmagento.com/onestep-checkout-a-magento-tutorial-part-1-steps-1-4-of-12/
+[Magento OneSyetep Checkout tutorial]: http://www.solvingmagento.com/onestep-checkout-a-magento-tutorial-part-1-steps-1-4-of-12/
