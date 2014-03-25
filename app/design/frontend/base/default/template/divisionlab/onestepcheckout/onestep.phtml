@@ -51,6 +51,11 @@
         </div>
     <?php endforeach ?>
 </div>
+<script type="text/javascript">
+    //<![CDATA[
+    var baseUrl = '<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true); ?>';
+    //]]>
+</script>
 <script
     type="text/javascript"
     src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/classes/MethodStep.js') ?>"
@@ -94,9 +99,3 @@
     type="text/javascript"
     src="<?php echo $this->getSkinUrl('js/divisionlab/onestepcheckout/onestep.js') ?>"
     ></script>
-<script type="text/javascript">
-    //<![CDATA[
-
-
-    //]]>
-</script>
