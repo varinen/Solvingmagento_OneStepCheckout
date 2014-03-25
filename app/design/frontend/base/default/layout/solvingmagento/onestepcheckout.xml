@@ -23,6 +23,15 @@
         </reference>
     </default>
 
+    <checkout_cart_index>
+        <reference name="checkout.cart.methods">
+            <block
+                    type="slvmto_onestepc/link"
+                    name="checkout.cart.methods.onestep"
+                    template="solvingmagento/onestepcheckout/link.phtml" />
+        </reference>
+    </checkout_cart_index>
+
 
     <checkout_onestep_index translate="label">
         <label>One Step Checkout</label>

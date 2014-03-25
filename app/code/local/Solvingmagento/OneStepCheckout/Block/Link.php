@@ -25,7 +25,7 @@
  * @link    http://www.solvingmagento.com/
  */
 
-class Solvingmagento_OneStepCheckout_Block_Link extends Mage_Core_Block_Template
+class Solvingmagento_OneStepCheckout_Block_Link extends Mage_Checkout_Block_Onepage_Link
 {
 
 
@@ -55,5 +55,15 @@ class Solvingmagento_OneStepCheckout_Block_Link extends Mage_Core_Block_Template
             );
         }
         return $this;
+    }
+
+    function isPossibleOneStepCheckout()
+    {
+        return $this->helper('slvmto_onestepc')->oneStepCheckoutEnabled();
+    }
+
+    function getCheckoutUrl()
+    {
+        return $this->getUrl('checkout/onestep', array('_secure'=>true));
     }
 }
