@@ -9,7 +9,8 @@ var
     MethodStep,
     //create constructor
     Login = Class.create(),
-    property;
+    property,
+    baseUrl;
 
 Login.prototype = {
     stepContainer: null,
@@ -22,7 +23,7 @@ Login.prototype = {
     initialize: function (id, saveMethodUrl) {
         'use strict';
 
-        this.saveMethodsUrl = saveMethodUrl || '/checkout/onestep/saveMethod';
+        this.saveMethodsUrl = saveMethodUrl || baseUrl + 'checkout/onestep/saveMethod';
         this.onSave         = this.methodSaved.bindAsEventListener(this);
         this.stepContainer  = $('checkout-step-' + id);
 

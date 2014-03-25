@@ -12,7 +12,8 @@ var
     checkout,
 //create constructor
     Review = Class.create(),
-    property;
+    property,
+    baseUrl;
 
 
 Review.prototype = {
@@ -24,9 +25,9 @@ Review.prototype = {
         'use strict';
 
         this.stepContainer    = $('checkout-step-' + id);
-        this.getStepUpdateUrl = getStepUpdateUrl || '/checkout/onestep/updateOrderReview';
-        this.submitOrderUrl   = submitOrderUrl  || '/checkout/onestep/submitOrder';
-        this.successUrl       = successUrl || '/checkout/onestep/success';
+        this.getStepUpdateUrl = getStepUpdateUrl || baseUrl + 'checkout/onestep/updateOrderReview';
+        this.submitOrderUrl   = submitOrderUrl  || baseUrl + 'checkout/onestep/submitOrder';
+        this.successUrl       = successUrl || baseUrl + 'checkout/onestep/success';
         this.onUpdate         = this.reviewUpdated.bindAsEventListener(this);
         this.onSuccess        = this.orderSubmitAfter.bindAsEventListener(this);
         this.readyToSave      = false;

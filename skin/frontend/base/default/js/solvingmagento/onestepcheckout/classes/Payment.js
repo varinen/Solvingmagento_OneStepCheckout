@@ -14,7 +14,8 @@ var
     checkout,
     //create constructor
     Payment = Class.create(),
-    property;
+    property,
+    baseUrl;
 
 Payment.prototype = {
     beforeInitFunc:       $H({}),
@@ -40,8 +41,8 @@ Payment.prototype = {
 
         this.stepContainer        = $('checkout-step-' + id);
         this.form                 = 'co-payment-form';
-        this.getPaymentMethodsUrl = getPaymentMethodsUrl || '/checkout/onestep/updatePaymentMethods';
-        this.savePaymentMethodUrl = savePaymentMethodUrl || '/checkout/onestep/savePaymentMethod';
+        this.getPaymentMethodsUrl = getPaymentMethodsUrl || baseUrl + 'checkout/onestep/updatePaymentMethods';
+        this.savePaymentMethodUrl = savePaymentMethodUrl || baseUrl + 'checkout/onestep/savePaymentMethod';
         this.onUpdate             = this.updateMethods.bindAsEventListener(this);
         this.onSave               = this.methodSaved.bindAsEventListener(this);
 

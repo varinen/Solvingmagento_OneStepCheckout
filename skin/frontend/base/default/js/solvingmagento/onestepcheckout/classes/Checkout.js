@@ -1,4 +1,4 @@
-var failureUrl = '/checkout/cart/',
+var
     //Prototype objects
     $,
     $$,
@@ -13,7 +13,10 @@ var failureUrl = '/checkout/cart/',
     buttonSaveText,
     buttonWaitText,
     //create the constructor
-    Checkout   = Class.create();
+    Checkout   = Class.create(),
+    baseUrl,
+    failureUrl = baseUrl + '/checkout/cart/';
+
 
 Checkout.prototype = {
     checkoutContainer: null,

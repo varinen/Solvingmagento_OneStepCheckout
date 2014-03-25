@@ -11,7 +11,8 @@ var
     checkout,
     //Create the constructor
     ShippingMethod = Class.create(),
-    property;
+    property,
+    baseUrl;
 
 ShippingMethod.prototype = {
     stepContainer: null,
@@ -30,8 +31,8 @@ ShippingMethod.prototype = {
         if (!this.stepContainer) {
             return;
         }
-        this.getStepUpdateUrl      = getStepUpdateUrl || '/checkout/onestep/updateShippingMethods';
-        this.saveShippingMethodUrl = saveStepData || '/checkout/onestep/saveShippingMethod';
+        this.getStepUpdateUrl      = getStepUpdateUrl || baseUrl + 'checkout/onestep/updateShippingMethods';
+        this.saveShippingMethodUrl = saveStepData || baseUrl + 'checkout/onestep/saveShippingMethod';
         this.onUpdate              = this.updateMethods.bindAsEventListener(this);
         this.onSave                = this.methodSaved.bindAsEventListener(this);
 
