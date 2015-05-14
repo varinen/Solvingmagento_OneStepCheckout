@@ -529,6 +529,8 @@ class Solvingmagento_OneStepCheckout_OnestepController extends Mage_Checkout_One
                                 $result['message'][] = $stepResult['message'];
                             }
                         }
+                    } else if (isset($stepResult['redirect'])) {
+                        $redirectUrl = $stepResult['redirect'];
                     }
                 }
                 if (isset($result['error'])) {
@@ -583,6 +585,7 @@ class Solvingmagento_OneStepCheckout_OnestepController extends Mage_Checkout_One
              * we will save the order in return action.
              */
             if (!empty($redirectUrl)) {
+                $result = array();
                 $result['redirect'] = $redirectUrl;
             }
         }
