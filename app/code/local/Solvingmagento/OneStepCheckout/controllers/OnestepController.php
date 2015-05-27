@@ -220,7 +220,7 @@ class Solvingmagento_OneStepCheckout_OnestepController extends Mage_Checkout_One
                 $result['fields'] = $e->getFields();
             }
             $result['error']   = 1;
-            $resutl['message'] = $e->getMessage();
+            $result['message'] = $e->getMessage();
         } catch (Mage_Core_Exception $e) {
             $result['error']   = 1;
             $result['message'] = $e->getMessage();
